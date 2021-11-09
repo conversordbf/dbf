@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/javascript" src="lib/xlsx.full.min.js"></script>
+  <script type="application/javascript" src="lib/pdf.min.js"></script>
+  <script type="application/javascript" src="lib/pdf.worker.min.js"></script>
+
+  <title>COMPARAÇÃO DE DECLARAÇÃO DE BENEFÍCIOS FISCAIS</title>
+</head>
+
+<body>
+  <div class="main">
+    <form>
+      <div class="row">
+        <h1>COMPARAÇÃO DE DECLARAÇÃO DE BENEFÍCIOS FISCAIS</h1>
+      </div>
+      <fieldset>
+        <legend><span class="number">1</span> Arquivo EXCEL (xlsx)</legend>
+
+        <div class="input-file-container">
+          <input class="input-file" id="input-file-sheet" type="file" accept=".xlsx">
+          <label for="input-file-sheet" class="input-file-trigger" id="button-input-file-sheet">Selecionar...</label>
+        </div>
+
+        <p class="file-return" id="file-return-sheet"></p>
+
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="number">2</span> Arquivo PDF</legend>
+
+        <div class="input-file-container">
+          <input class="input-file" id="input-file-pdf" type="file" accept=".pdf">
+          <label for="input-file-pdf" class="input-file-trigger" id="button-input-file-pdf">Selecionar...</label>
+        </div>
+
+        <dic class="file-return" id="file-return-pdf">
+          </p>
+
+      </fieldset>
+
+      <div class="row">
+        <button type="button" class="button" onclick="run()">Comparar Arquivos</button>
+      </div>
+    </form>
+
+    <div class="row" id="output"></div>
+  </div>
+  <script type="application/javascript" src="comparador.js"></script>
+</body>
+</html>

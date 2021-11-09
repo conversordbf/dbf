@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/javascript" src="lib/xlsx.full.min.js"></script>
+  <script type="application/javascript" src="lib/FileSaver.min.js"></script>
+
+  <title>DECLARAÇÃO DE BENEFÍCIOS FISCAIS</title>
+</head>
+
+<body>
+  <div class="main">
+    <form>
+      <div class="row">
+        <h1>DECLARAÇÃO DE BENEFÍCIOS FISCAIS</h1>
+      </div>
+      <fieldset>
+        <legend><span class="number">1</span> Arquivo de Entrada</legend>
+
+        <div class="input-file-container">
+          <input class="input-file" id="input-file" type="file" accept=".xlsx">
+          <label for="input-file" class="input-file-trigger" id="input-file-button">Selecionar...</label>
+        </div>
+
+        <p class="file-return" id="file-return"></p>
+
+      </fieldset>
+
+      <div class="row">
+        <button type="button" class="button" onclick="run()">Gerar TXT</button>
+      </div>
+    </form>
+    <script type="application/javascript" src="conversor.js"></script>
+</body>
+</html>
