@@ -78,7 +78,7 @@ function readSheetFileContent(data) {
 }
 
 function extractGiversDataFromText(rawText) {
-  const regexp = /(CPF\/CNPJ do doador : )(\d{3}.\d{3}.\d{3}-\d{2}|\d{2}.\d{3}.\d{3}\/\d{4}-\d{2})(Valor da doação: R\$ )(-{0,1}[0-9]\d{0,2}((\.\d{3})*),\d{2})(CNPJ do fundo beneficiário :)/gm;
+  const regexp = /(CPF\/CNPJ do doador : )(\d{3}.\d{3}.\d{3}-\d{2}|\d{2}.\d{3}.\d{3}\/\d{4}-\d{2})(Valor da doação: R\$ )(-{0,1}[0-9]\d{0,2}((\.\d{3})*),\d{2})/gm;
   const matches = [...rawText.matchAll(regexp)];
 
   const data = matches.map((match) => ({
@@ -188,7 +188,7 @@ async function run() {
     const sheetFileContent = await getFileContent(fileInputSheet.files[0], readSheetFileContent);
     const sheetData = sheetFileContent.filter((row, idx) => idx !== 0)
       .map((row) => ({
-        giverDocument: row.CNPJDoador,
+        giverDocument: row.CNPJDoador.trim(),
         amountDonated: row.ValorDoacao
       }))
       .sort((firstEl, secondEl) => firstEl.giverDocument.localeCompare(secondEl.giverDocument));
@@ -196,12 +196,15 @@ async function run() {
     const totalAmountSheet = sheetData.reduce((acc, currentValue) => {
       return acc + currentValue.amountDonated;
     }, 0);
+    
 
     // console.log(sheetData);
 
     const pdfFileContent = await getFileContent(fileInputPdf.files[0], readPdfFileContent);
+
     const pdfData = extractGiversDataFromText(pdfFileContent)
       .sort((firstEl, secondEl) => firstEl.giverDocument.localeCompare(secondEl.giverDocument));
+
     const totalAmountPdf = pdfData.reduce((acc, currentValue) => {
       return acc + currentValue.amountDonated;
     }, 0);
