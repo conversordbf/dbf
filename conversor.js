@@ -102,7 +102,7 @@ function formatDataToLayoutDBF(jsonData) {
       totalRecordsType2 = totalRecordsType2 + 1;
     }
 
-    const line = `${row.TipoDeFundo}${formatCnpjCpf(row.CNPJBenefic)}${formatCnpjCpf(row.CNPJDoador)}${row.TipoDoacao.padStart(2, '0')}${formatCurrency(row.ValorDoacao)}`;
+    const line = `${row.TipoDeFundo}${formatCnpjCpf(row.CNPJBenefic)}${formatCnpjCpf(row.CNPJDoador)}${String(row.TipoDoacao).padStart(2, '0')}${formatCurrency(row.ValorDoacao)}`;
     outputData.push(line);
 
     // // footer record type 9
