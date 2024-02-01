@@ -91,7 +91,7 @@ function formatDataToLayoutDBF(jsonData) {
   jsonData.filter((row, idx) => idx !== 0).forEach((row, idx) => {
     // header record type 0
     if (idx === 0) {
-      outputData.push(`0${sanitizeOnlyNumbers(row.CNPJBasico)}${row.AnoCalendario}02`);
+      outputData.push(`0${sanitizeOnlyNumbers(row.CNPJBasico).padStart(8, '0')}${row.AnoCalendario}02`);
     }
 
     if (Number(row.TipoDeFundo) === 1) {
